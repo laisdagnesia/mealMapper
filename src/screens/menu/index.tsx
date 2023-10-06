@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import meal from './../../../assets/images/meal.jpeg';
 import { Input } from '@rneui/themed';
-import {Button, Icon } from 'react-native-elements';;
+import {Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation';
@@ -27,7 +27,12 @@ export function MenuScreen(props: any) {
           raised={true}></Button>
           <Text 
           onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
+          <Text 
+          onPress= {() => navigation.navigate('imc')}>Avaliação Nutricional</Text>
+           <Text 
+          onPress= {() => navigation.navigate('calculosOpcoes')}>CALCULOS</Text>
       </View>
+
     </ImageBackground>
   );
 }
