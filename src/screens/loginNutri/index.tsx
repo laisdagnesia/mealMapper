@@ -7,15 +7,14 @@ import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation';
-export interface LoginscreenProps {}
 
-export function LoginScreen(props: LoginscreenProps) {
+export function LoginScreenNutri(props: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
 
-  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login'>;
+  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'loginNutri', 'menuNutri'>;
   const navigation = useNavigation<navProps>();
 
   const handleLogin = () => {
@@ -29,7 +28,8 @@ export function LoginScreen(props: LoginscreenProps) {
         if (!isValidEmail || !isValidPassword) {
       return ;
     }  if (isValidEmail && isValidPassword){
-      Alert.alert(`Login Realizado!`);}
+      navigation.navigate('menuNutri')}
+      //Alert.alert(`Login Realizado!`);}
   };
 
   return (

@@ -7,28 +7,25 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation';
 
-export function MenuScreen(props: any) {
-  type navProps = StackNavigationProp<NavegacaoPrincipalParams,  'login' ,'cadastro'>;
+export function MenuNutri(props: any) {
+  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'calculosOpcoes'>;
   const navigation = useNavigation<navProps>();
   return (
     <ImageBackground source={meal} style={styles.background}>
+        <Text>MENU NUTRI</Text>
       <View style={styles.container}>
         <Button 
-          title="Sou Nutricionista"
+          title="Avaliação Nutricional"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
           containerStyle={{   marginTop:230}}
-          onPress= {() => navigation.navigate('loginNutri')}  
+          onPress= {() => navigation.navigate('calculosOpcoes')}  
           raised={true}></Button>
         <Button 
-          title="Sou Paciente"
+          title="AGENDAMENTO"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
           containerStyle={{ marginTop:10}}
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
-          <Text 
-          onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
-           <Text 
-          onPress= {() => navigation.navigate('calculosOpcoes')}>CALCULOS</Text>
       </View>
 
     </ImageBackground>

@@ -65,11 +65,11 @@ export function CadastroScreen(props: any){
         style={{
           width: 200,
           borderWidth: 1,
-          marginBottom: 10,
+          marginBottom: 1,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
-      {!isValidEmail && <Text style={{ color: 'red' }}>Email Invalido</Text>}
+      {!isValidEmail && <Text style={{ color: 'red',marginTop:-15}}>Email Invalido</Text>}
       <Input
         placeholder="Senha"
        onChangeText={setPassword}
@@ -78,15 +78,15 @@ export function CadastroScreen(props: any){
         style={{
           width: 200,
           borderWidth: 1,
-          marginBottom: 10,
+          //marginBottom: 10,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />
-        {!isValidPassword && <Text style={{ color: 'red' }}>Senha Invalida!</Text>}
+        {!isValidPassword && <Text style={{ color: 'red', marginTop:-15 }}>Senha Invalida!</Text>}
        <Button
           title=" Cadastrar"
           onPress= {handleSignIn} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}}
           icon={
             <Icon
               name="save"
@@ -95,15 +95,15 @@ export function CadastroScreen(props: any){
             />
           }
           raised={true}></Button>
-          <Button
+          {/*<Button
           title="Login"
           onPress= {() => navigation.navigate('login')} 
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
           containerStyle={{ borderRadius: 30, marginTop:15}} 
-          raised={true}></Button>
+        raised={true}></Button>*/}
           <Button title="Voltar" onPress={() => navigation.goBack()}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-            containerStyle={{ borderRadius: 30, marginTop:15}} 
+            containerStyle={{ marginTop:15}} 
               raised={true}></Button>
     </View>
     </ImageBackground>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
    padding: 5,
     alignItems: 'stretch',
-    marginTop: 250,
+    marginTop: 260,
   },
   inputContainer: {
     backgroundColor: 'white',

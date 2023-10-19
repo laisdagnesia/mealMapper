@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import comida from './../../../assets/images/comida.jpeg';
+import balanca from './../../../assets/images/balanca.jpeg';
 import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +14,7 @@ export function OpcoesCalculo(props: any) {
 
   const buttons = ['Calcular TMB', 'Calcular IMC'];
 
-  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login' | 'cadastro'>;
+  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login' | 'loginNutri'>;
   const navigation = useNavigation<navProps>();
 
   const renderOption = () => {
@@ -26,9 +26,8 @@ export function OpcoesCalculo(props: any) {
   };
 
   return (
-    <ImageBackground source={comida} style={styles.background}>
+    <ImageBackground source={balanca} style={styles.background}>
       <View style={styles.container}>
-        <Text style={styles.title}>Escolha uma opção:</Text>
         <ButtonGroup
           onPress={(index) => setSelectedIndex(index)}
           selectedIndex={selectedIndex}
@@ -40,13 +39,13 @@ export function OpcoesCalculo(props: any) {
         />
 
         {renderOption()}
-        <Button
+        {/*<Button
           title="Voltar"
           onPress={() => navigation.goBack()}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
           containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
-        />
+        />*/}
       </View>
     </ImageBackground>
   );
@@ -72,6 +71,7 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
+    marginTop: 120,
   },
   buttonText: {
     color: 'white',

@@ -34,11 +34,9 @@ export function CalculoTMB(props: any) {
   }
 
   const mostrarAlerta = (titulo: string, mensagem: string, cor: string) => {
-    // Implemente a lógica para exibir o alerta com a cor especificada
   };
 
   const calcularTMBEExibirAlerta = () => {
-    // Validação dos campos de entrada
     if (!idade || !peso || !altura || !sexo) {
       mostrarAlerta('Campos incompletos', 'Preencha todos os campos.', 'red');
       return;
@@ -62,7 +60,6 @@ export function CalculoTMB(props: any) {
   };
 
   return (
-    <ImageBackground source={comida} style={styles.background}>
       <View style={styles.container}>
         <Input
           placeholder="Idade"
@@ -85,7 +82,7 @@ export function CalculoTMB(props: any) {
           keyboardType="numeric"
           style={styles.input}
         />
-            <RNPickerSelect
+        <RNPickerSelect
           placeholder={{ label: 'Selecione o sexo', value: null }}
           onValueChange={(value) => setSexo(value)}
           items={[
@@ -100,7 +97,7 @@ export function CalculoTMB(props: any) {
           title="Calcular TMB"
           onPress={calcularTMBEExibirAlerta}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ borderRadius: 30, marginTop: 15 }}
+          containerStyle={{ marginTop: 15 }}
           raised={true}
         />
 
@@ -113,11 +110,10 @@ export function CalculoTMB(props: any) {
           title="Voltar"
           onPress={() => navigation.goBack()}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ borderRadius: 30, marginTop: 15 }}
+          containerStyle={{ marginTop: 15 }}
           raised={true}
         />
       </View>
-    </ImageBackground>
   );
 }
 
@@ -135,7 +131,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   resultContainer: {
-    backgroundColor: 'green', // Cor de fundo para o resultado
+    backgroundColor: 'green',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
