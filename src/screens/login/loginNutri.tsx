@@ -3,10 +3,11 @@ import React , { useState } from 'react';
 import meal from './../../../assets/images/meal.jpeg';
 import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
 import { Input } from '@rneui/themed';
-import { Button, Icon } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export function LoginScreenNutri(props: any) {
   const [email, setEmail] = useState('');
@@ -70,7 +71,7 @@ export function LoginScreenNutri(props: any) {
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
           icon={
             <Icon
-              name="restaurant"
+              name="user-md"
               size={24}
               color="white" 
             />

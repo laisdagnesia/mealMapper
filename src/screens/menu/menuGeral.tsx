@@ -28,7 +28,7 @@ export function MenuScreen(props: any) {
           <Text 
           onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
            <Text 
-          onPress= {() => navigation.navigate('calculosOpcoes')}>CALCULOS</Text>
+          onPress= {() => navigation.navigate('agendamento')}>agendamento</Text>
       </View>
 
     </ImageBackground>
