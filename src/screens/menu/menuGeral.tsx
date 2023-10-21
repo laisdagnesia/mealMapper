@@ -5,7 +5,7 @@ import { Input } from '@rneui/themed';
 import {Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 
 export function MenuScreen(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams,  'login' ,'cadastro'>;
@@ -25,11 +25,11 @@ export function MenuScreen(props: any) {
           containerStyle={{ marginTop:10}}
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
-          <Text 
-          onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
-           <Text 
-          onPress= {() => navigation.navigate('agendamento')}>agendamento</Text>
+          <Text onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
+    
+          
       </View>
+      
 
     </ImageBackground>
   );

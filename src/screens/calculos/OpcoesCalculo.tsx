@@ -4,7 +4,7 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import { CalculoTMB } from './calculoTaxaBasal';
 import { CalculoIMC } from './imcCalculo';
 import { Button } from 'react-native-elements';
@@ -59,19 +59,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
+    //padding: 20,
   },
   buttonGroup: {
     height: 50,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
-    marginTop: 120,
+    marginTop: 150,
   },
   buttonText: {
     color: 'white',

@@ -1,4 +1,3 @@
-//import * as React from 'react';
 import React , { useState } from 'react';
 import meal from './../../../assets/images/meal.jpeg';
 import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
@@ -6,7 +5,7 @@ import { Input } from '@rneui/themed';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 export interface LoginscreenProps {}
 
 export function LoginScreen(props: LoginscreenProps) {

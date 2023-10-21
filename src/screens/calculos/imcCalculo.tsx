@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Modal } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 
 export function CalculoIMC(props: any) {
   const [peso, setPeso] = useState('');

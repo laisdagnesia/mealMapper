@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
-import meal from './../../../assets/images/meal.jpeg';
+import bg from './../../../assets/images/bg.jpeg';
 import { Input } from '@rneui/themed';
 import {Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
@@ -14,14 +14,14 @@ export function MenuNutri(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login','calculosOpcoes'>;
   const navigation = useNavigation<navProps>();
   return (
-    <ImageBackground source={meal} style={styles.background}>
+    <ImageBackground source={bg} style={styles.background}>
       <View style={styles.container}>
         <Button 
           title="Avaliação Nutricional"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
           containerStyle={{   marginTop:230}}
           onPress= {() => navigation.navigate('calculosOpcoes')}  
-          icon={<FontAwesomeIcon icon={faWeightScale} size={24} color="white" />} 
+          icon={<FontAwesomeIcon icon={faWeightScale} size={24} color="white" style={{ marginRight: 10 }} />} 
           raised={true}></Button>
         <Button 
           title="Agendar Consulta"
@@ -33,20 +33,27 @@ export function MenuNutri(props: any) {
               name="calendar"
               size={24}
               color="white" 
+              style={{ marginRight: 10 }}
             />
           } 
           raised={true}></Button>
           <Button 
-          title="MEUS PACIENTES"
+          title="Cadastrar Paciente"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
           containerStyle={{ marginTop:10}}
-          onPress= {() => navigation.navigate('login')} 
+          onPress= {() => navigation.navigate('cadastroPaciente')} 
           raised={true}></Button>
           <Button 
-          title="MEUS PACIENTES"
+          title="Meus Pacientes"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
           containerStyle={{ marginTop:10}}
-          onPress= {() => navigation.navigate('login')} 
+          onPress= {() => navigation.navigate('listaPacientes')} 
+          raised={true}></Button>
+          <Button 
+          title="Planejamento Alimentar Individual"
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
+          containerStyle={{ marginTop:10}}
+          onPress= {() => navigation.navigate('planoAlimentar')} 
           raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
            containerStyle={{  marginTop:15}} 
@@ -68,4 +75,5 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'stretch',
   }
+
 });

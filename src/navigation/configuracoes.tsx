@@ -1,12 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import {MenuScreen} from '../screens/menu/menuGeral';
-import { LoginScreen } from '../screens/login/loginCliente';
-import { LoginScreenNutri } from '../screens/login/loginNutri';
+import { LoginScreen } from '../screens/loginCliente/loginCliente';
+import { LoginScreenNutri } from '../screens/loginNutri/loginNutri';
 import {CadastroScreen} from '../screens/cadastro'; 
 import {CalculoIMC} from '../screens/calculos/imcCalculo'; 
 import { OpcoesCalculo } from '../screens/calculos/OpcoesCalculo';
 import {MenuNutri} from '../screens/menuNutri/menuNutri';
 import {AgendarConsultaScreen} from '../screens/agendamento/agendamento';
+import { CadastroPaciente } from '../screens/cadastroPaciente/cadastroPaciente';
+import ListaDePacientes from "../screens/listaPacientes/listaPacientes";
+import ListaPlanoAlimentar from "../screens/listaPlanoAlimentar/listaPlanoAlimentar";
+import { PlanoAlimentarIndividual } from '../screens/planoAlimentar/planoAlimentar';
 import {MaterialIcons} from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -19,6 +23,10 @@ export type NavegacaoPrincipalParams = {
   menuNutri: undefined,
   loginNutri: undefined,
   agendamento: undefined,
+  cadastroPaciente: undefined,
+  listaPacientes: undefined,
+  planoAlimentar: undefined,
+  listaPlanoAlimentar:undefined,
 }
 const Stack = createStackNavigator<NavegacaoPrincipalParams>();
 
@@ -34,7 +42,11 @@ export const TelaConfiguracao = () => (
             <Stack.Screen name="calculosOpcoes" component={OpcoesCalculo}/>
             <Stack.Screen name="menuNutri" component={MenuNutri}/>
             <Stack.Screen name="agendamento" component={AgendarConsultaScreen}/>
-            
+            <Stack.Screen name="cadastroPaciente" component={CadastroPaciente}/>
+            <Stack.Screen name="listaPacientes" component={ListaDePacientes} />
+            <Stack.Screen name="planoAlimentar" component={PlanoAlimentarIndividual} />
+            <Stack.Screen name="listaPlanoAlimentar" component={ListaPlanoAlimentar} />
+
         </Stack.Navigator>
     </NavigationContainer>
 )

@@ -4,7 +4,7 @@ import { View, ImageBackground, StyleSheet, Text } from 'react-native';
 import { Input, Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import RNPickerSelect from 'react-native-picker-select';
 
 export function CalculoTMB(props: any) {
@@ -18,15 +18,13 @@ export function CalculoTMB(props: any) {
   const navigation = useNavigation<navProps>();
 
   function calcularTMB(idade: number, peso: number, altura: number, sexo: 'masculino' | 'feminino'): number {
-    // Constantes usadas na fórmula de Harris-Benedict
     const constanteMasculina = 88.362;
     const constanteFeminina = 447.593;
     
     if (sexo === 'masculino') {
-      // Fórmula de Harris-Benedict para homens
+      // Fórmula de Harris-Benedict
       return Math.round(constanteMasculina + (13.397 * peso) + (4.799 * altura) - (5.677 * idade));
     } else if (sexo === 'feminino') {
-      // Fórmula de Harris-Benedict para mulheres
       return Math.round(constanteFeminina + (9.247 * peso) + (3.098 * altura) - (4.330 * idade));
     } else {
       throw new Error('Sexo deve ser "masculino" ou "feminino".');
@@ -42,18 +40,15 @@ export function CalculoTMB(props: any) {
       return;
     }
 
-    // Converte os valores de entrada para números
     const idadeNumber = parseFloat(idade);
     const pesoNumber = parseFloat(peso);
     const alturaNumber = parseFloat(altura);
 
-    // Validação adicional dos valores de entrada
     if (isNaN(idadeNumber) || isNaN(pesoNumber) || isNaN(alturaNumber)) {
       mostrarAlerta('Valores inválidos', 'Idade, peso e altura devem ser números válidos.', 'red');
       return;
     }
 
-    // Cálculo da TMB
     const tmbCalculada = calcularTMB(idadeNumber, pesoNumber, alturaNumber, sexo);
     setTMB(tmbCalculada);
     mostrarAlerta('TMB Calculada', `Sua TMB é de ${tmbCalculada.toFixed(2)} calorias por dia.`, 'green');

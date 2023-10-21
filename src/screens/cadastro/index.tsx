@@ -7,7 +7,7 @@ import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 
 
 export function CadastroScreen(props: any){
@@ -78,7 +78,6 @@ export function CadastroScreen(props: any){
         style={{
           width: 200,
           borderWidth: 1,
-          //marginBottom: 10,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />

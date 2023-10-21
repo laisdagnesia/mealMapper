@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,ImageBackground } from 'react-native';
 import { Input, Button, Icon } from 'react-native-elements';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavegacaoPrincipalParams } from '../../navigation';
+import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
+import bg from './../../../assets/images/bg.jpeg';
 
 export function AgendarConsultaScreen() {
   const [nome, setNome] = useState('');
@@ -32,6 +33,7 @@ export function AgendarConsultaScreen() {
   };
 
   return (
+    <ImageBackground source={bg} style={styles.background}>
     <View style={styles.container}>
       <Text style={styles.title}>Agendar Consulta</Text>
       <Text style={{fontSize:20, marginBottom:10, marginTop:10}}>Data da Consulta</Text>
@@ -103,6 +105,7 @@ export function AgendarConsultaScreen() {
           raised={true}
         />
     </View>
+    </ImageBackground>
   );
 }
 
@@ -114,7 +117,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 200,
   },
   inputContainer: {
     marginTop: 20,
@@ -125,6 +128,10 @@ const styles = StyleSheet.create({
   buttonHora: {
     backgroundColor: 'rgb(11, 218, 81)'
   },
+  background: {
+    width: '100%',
+    height: '100%',
+  }
 
 
 });
