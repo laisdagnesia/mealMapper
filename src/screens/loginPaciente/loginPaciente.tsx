@@ -14,7 +14,7 @@ export function LoginScreen(props: LoginscreenProps) {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
 
-  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login'>;
+  type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login','menuPaciente'>;
   const navigation = useNavigation<navProps>();
 
   const handleLogin = () => {
@@ -28,7 +28,8 @@ export function LoginScreen(props: LoginscreenProps) {
         if (!isValidEmail || !isValidPassword) {
       return ;
     }  if (isValidEmail && isValidPassword){
-      Alert.alert(`Login Realizado!`);}
+      navigation.navigate('menuPaciente')}
+     //Alert.alert(`Login Realizado!`);}
   };
 
   return (

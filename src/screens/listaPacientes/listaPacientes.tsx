@@ -27,7 +27,6 @@ const ListaDePacientes = ({ route }) => {
           title="Voltar"
           onPress={() => navigation.goBack()}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ marginTop: 15 }}
           raised={true}
         />
     </View>

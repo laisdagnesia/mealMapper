@@ -5,7 +5,7 @@ import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
 import { Input } from '@rneui/themed';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-
+import RNPickerSelect from 'react-native-picker-select';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 
@@ -16,6 +16,7 @@ export function CadastroScreen(props: any){
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [sexo, setSexo] = useState('');
   const [isValidPassword, setIsValidPassword] = useState(true);
 
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'cadastro'>;
@@ -55,6 +56,16 @@ export function CadastroScreen(props: any){
         value={cpf}
         style={{ width: 200, borderWidth: 1, marginBottom: 10 }}
       />
+       <RNPickerSelect
+          placeholder={{ label: 'Selecione o sexo', value: null }}
+          onValueChange={(value) => setSexo(value)}
+          items={[
+            { label: 'Feminino', value: 'feminino' },
+            { label: 'Masculino', value: 'masculino' },
+          ]}
+          value={sexo}
+          style={pickerSelectStyles}
+        />
       <Input
         placeholder="Email"
         onChangeText={(text) => {
@@ -124,5 +135,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
    // borderRadius: 30,
   },
-});
 
+});
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    marginBottom:20,
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30,
+    backgroundColor: 'white',
+  },
+});
