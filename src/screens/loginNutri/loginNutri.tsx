@@ -29,7 +29,6 @@ export function LoginScreenNutri(props: any) {
       return ;
     }  if (isValidEmail && isValidPassword){
       navigation.navigate('menuNutri')}
-      //Alert.alert(`Login Realizado!`);}
   };
 
   return (

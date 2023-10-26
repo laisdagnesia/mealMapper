@@ -115,9 +115,12 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
     marginTop: 200,
+    marginBottom:10,
+    color: 'rgb(79, 121, 66)' ,
+    textAlign: 'center'
   },
   inputContainer: {
     marginTop: 20,
@@ -132,6 +135,4 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   }
-
-
 });

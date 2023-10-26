@@ -16,7 +16,7 @@ import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import RNPickerSelect from 'react-native-picker-select';
 
 export function PlanoAlimentarIndividual() {
-  const [tipo, setTipo] = useState(''); // Initialize tipo with an empty string
+  const [tipo, setTipo] = useState(''); //Inicia tipo como uma string vazia
   const [nome, setNome] = useState('');
   const [alimento, setAlimento] = useState('');
   const [dietaList, setDietaList] = useState([]);
@@ -36,7 +36,7 @@ export function PlanoAlimentarIndividual() {
       setDietaList([...dietaList, dietEntry]);
 
       setNome('');
-      setTipo(''); // Reset tipo to an empty string
+      setTipo(''); // Torna o tipo uma string vazia
       setAlimento('');
 
       navigation.navigate('listaPlanoAlimentar', { dietaList: [...dietaList, dietEntry] });
@@ -113,7 +113,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 10,
+    textAlign:'center',
+    marginBottom:10,
+    color: 'rgb(79, 121, 66)' 
+
+    
   },
 });
 const pickerSelectStyles = StyleSheet.create({
@@ -123,7 +127,6 @@ const pickerSelectStyles = StyleSheet.create({
     paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: 'gray',
-    //marginBottom:20,
     marginTop: 20,
     borderRadius: 4,
     color: 'black',

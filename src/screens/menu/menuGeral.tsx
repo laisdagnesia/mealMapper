@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import meal from './../../../assets/images/meal.jpeg';
 import { Input } from '@rneui/themed';
-import {Button, Icon } from 'react-native-elements';
+import {Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
@@ -22,15 +22,11 @@ export function MenuScreen(props: any) {
         <Button 
           title="Sou Paciente"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          containerStyle={{ marginTop:15}}
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
-          <Text onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
-    
-          
+          <Text style={{marginTop:10}}onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
       </View>
-      
-
     </ImageBackground>
   );
 }

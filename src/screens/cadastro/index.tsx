@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: 'white',
-   // borderRadius: 30,
   },
 
 });

@@ -46,9 +46,11 @@ const styles = StyleSheet.create({
     marginBottom:10
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
     marginTop: 220,
+    color:'rgb(79, 121, 66)',
+    textAlign: 'center'
   },
   background: {
     width: '100%',

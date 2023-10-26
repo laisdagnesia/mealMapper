@@ -3,17 +3,20 @@ import bg from './../../../assets/images/bg.jpeg';
 import {
   View,
   Text,
+  TouchableOpacity,
   ImageBackground,
   StyleSheet,
-  FlatList,
   Alert,
+  Image as ImageNative
 } from 'react-native';
 import { Input } from '@rneui/themed';
-import { Button, Icon } from 'react-native-elements';
+import { Button, Image } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import RNPickerSelect from 'react-native-picker-select';
+import * as ImagePicker from 'expo-image-picker';
+import avatar from '../../../assets/images/avatar.jpeg';
 
 export function CadastroPaciente() {
   const [nome, setNome] = useState('');
@@ -29,24 +32,37 @@ export function CadastroPaciente() {
     if (!nome) {
       Alert.alert('Preencha todos os campos.');
     } else {
-      // Add the entered name to the list
       setNomesList([...nomesList, nome]);
 
-      // Clear input fields
       setNome('');
       setPeso('');
       setDataNasc('');
       setAltura('');
 
-      // Navigate to the "listaPacientes" screen, passing the updated nomesList
       navigation.navigate('listaPacientes', { nomesList: [...nomesList, nome] });
     }
   };
+  const [image, setImage] = useState(ImageNative.resolveAssetSource(avatar).uri);
+  const openCamera = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
+        
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+    };
 
   return (
     <ImageBackground source={bg} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}> Cadastro Paciente</Text>
+                <TouchableOpacity onPress={openCamera}>
+                    <Image source={{uri : image}}style={styles.image}></Image>
+                </TouchableOpacity>
         <Input
           placeholder="Nome Completo"
           onChangeText={setNome}
@@ -126,9 +142,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 90,
+    marginTop: 200,
+    marginBottom:20,
+    textAlign:'center',
+    color: 'rgb(79, 121, 66)' 
+  },
+  image : {
+    width: 100,
+    height: 100,
+    borderRadius: 150,
+    marginLeft:150,
   },
 });
 const pickerSelectStyles = StyleSheet.create({
@@ -143,5 +168,5 @@ const pickerSelectStyles = StyleSheet.create({
     color: 'black',
     paddingRight: 30,
     backgroundColor: 'white',
-  },
+  },  
 });
