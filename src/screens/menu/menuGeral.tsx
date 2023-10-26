@@ -26,6 +26,7 @@ export function MenuScreen(props: any) {
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
           <Text style={{marginTop:10}}onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
+          <Text style={{marginTop:10}}onPress= {() => navigation.navigate('tiraFoto')} > Tirar Foto </Text>
       </View>
     </ImageBackground>
   );

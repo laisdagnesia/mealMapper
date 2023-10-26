@@ -12,6 +12,7 @@ import { CadastroPaciente } from '../screens/cadastroPaciente/cadastroPaciente';
 import ListaDePacientes from "../screens/listaPacientes/listaPacientes";
 import ListaPlanoAlimentar from "../screens/listaPlanoAlimentar/listaPlanoAlimentar";
 import { PlanoAlimentarIndividual } from '../screens/planoAlimentar/planoAlimentar';
+import { TirarFoto } from '../screens/cadastroPaciente/tirarFoto';
  import { createStackNavigator } from '@react-navigation/stack';
 
 export type NavegacaoPrincipalParams = {
@@ -28,6 +29,7 @@ export type NavegacaoPrincipalParams = {
   listaPacientes: undefined,
   planoAlimentar: undefined,
   listaPlanoAlimentar:undefined,
+  tiraFoto: undefined,
 }
 const Stack = createStackNavigator<NavegacaoPrincipalParams>();
 
@@ -48,6 +50,7 @@ export const TelaConfiguracao = () => (
             <Stack.Screen name="planoAlimentar" component={PlanoAlimentarIndividual} />
             <Stack.Screen name="listaPlanoAlimentar" component={ListaPlanoAlimentar} />
             <Stack.Screen name="menuPaciente" component={MenuPaciente} />
+            <Stack.Screen name="tiraFoto" component={TirarFoto} />
         </Stack.Navigator>
 
     </NavigationContainer>

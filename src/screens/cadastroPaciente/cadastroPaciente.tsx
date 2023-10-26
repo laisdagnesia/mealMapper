@@ -43,7 +43,7 @@ export function CadastroPaciente() {
     }
   };
   const [image, setImage] = useState(ImageNative.resolveAssetSource(avatar).uri);
-  const openCamera = async () => {
+  const openLibrary = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           allowsEditing: true,
@@ -56,13 +56,34 @@ export function CadastroPaciente() {
         }
     };
 
+    const [ status, requestPermission ] = ImagePicker.useCameraPermissions();
+    const tirarFoto = async () => {
+      if (!status?.granted) {   
+        const resposta = await requestPermission(); 
+        if (!resposta.granted) 
+          return
+      }
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    
+    };
+      
+
   return (
     <ImageBackground source={bg} style={styles.background}>
       <View style={styles.container}>
         <Text style={styles.title}> Cadastro Paciente</Text>
-                <TouchableOpacity onPress={openCamera}>
+                <TouchableOpacity onPress={openLibrary}>
                     <Image source={{uri : image}}style={styles.image}></Image>
                 </TouchableOpacity>
+                <Button title="Tirar Foto" onPress={tirarFoto} />
         <Input
           placeholder="Nome Completo"
           onChangeText={setNome}
