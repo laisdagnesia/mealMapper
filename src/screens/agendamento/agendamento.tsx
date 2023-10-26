@@ -129,10 +129,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(34, 139, 34)'
   },
   buttonHora: {
-    backgroundColor: 'rgb(11, 218, 81)'
+    backgroundColor: 'rgb(34, 139, 34)'
   },
   background: {
     width: '100%',
     height: '100%',
   }
+
 });

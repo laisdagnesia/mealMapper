@@ -58,11 +58,12 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   text:{
-    fontSize: 33,
+    fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 240,
-    marginLeft:65,
-    marginBottom:-200
+    textAlign:'center',
+    marginTop: 250,
+    marginBottom:-200,
+    color: 'rgb(79, 121, 66)' ,
     
   },
 
