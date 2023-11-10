@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    //padding: 20,
+    marginTop:50
   },
   buttonGroup: {
     height: 50,

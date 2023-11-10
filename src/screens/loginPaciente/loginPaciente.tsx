@@ -1,7 +1,7 @@
 import React , { useState } from 'react';
 import meal from './../../../assets/images/meal.jpeg';
-import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
-import { Input } from '@rneui/themed';
+import { View, Text, ImageBackground, StyleSheet, Alert , TextInput} from 'react-native';
+//import { Input } from '@rneui/themed';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -35,7 +35,7 @@ export function LoginScreen(props: LoginscreenProps) {
   return (
     <ImageBackground source={meal} style={styles.background}>
       <View style={styles.container}>
-      <Input
+      <TextInput
         placeholder="Email"
         onChangeText={(text) => {
           setEmail(text);
@@ -43,31 +43,42 @@ export function LoginScreen(props: LoginscreenProps) {
         }}
         value={email}
         style={{
-          width: 200,
+          width: 300,
+          height:30,
           borderWidth: 1,
-          marginBottom: 10,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
-      {!isValidEmail && <Text style={{ color: 'red', marginTop:-15 }}>Email Invalido</Text>}
-      <Input
+      {!isValidEmail && <Text style={{ color: 'red', marginTop:-15 }}>Email Inválido
+</Text>}
+      <TextInput
         placeholder="Senha"
         onChangeText={setPassword}
         value={password}
         secureTextEntry={true}
         style={{
-          width: 200,
+          width: 300,
+          height:30,
           borderWidth: 1,
-          marginBottom: 10,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2,
          borderColor: isValidPassword ? 'black' : 'red',
         }}
       />
-        {!isValidPassword && <Text style={{ color: 'red', marginTop:-15}}>Senha Invalida</Text>}
+        {!isValidPassword && <Text style={{ color: 'red', marginTop:-15}}>Senha Inválida
+</Text>}
         <Button
           title=" Login"
            onPress={handleLogin} 
-          containerStyle={{ borderRadius: 30}} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+           containerStyle={{borderRadius: 80}} 
+           style={styles.button}
+           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
           icon={
             <Icon
               name="restaurant"
@@ -77,8 +88,9 @@ export function LoginScreen(props: LoginscreenProps) {
           }
           raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
-           containerStyle={{  marginTop:15}} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+          style={styles.button}
+           containerStyle={{   marginTop:15,borderRadius: 80}} 
+           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
            />
 
       </View>
@@ -93,13 +105,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 10,
-    alignItems: 'stretch',
+    alignItems: 'center',
     marginTop: 400,
   },
-  inputContainer: {
-    backgroundColor: 'white',
-    borderRadius: 30,
-    padding: 5
+  button: {
+    borderRadius: 80,
+    height: 40,
+    //width: 150
+    width: 300
   },
 });

@@ -40,7 +40,9 @@ export function AgendarConsultaScreen() {
       <Button
         title="Selecione a Data"
         onPress={showDatepicker}
-        buttonStyle={styles.buttonHora}
+        buttonStyle={styles.button}
+        style={styles.button}
+        containerStyle={{ borderRadius: 80}}
         icon={<Icon name="event" size={24} color="white" />}
         raised
       />
@@ -64,7 +66,9 @@ export function AgendarConsultaScreen() {
       <Button
         title="Selecione o Horário"
         onPress={showTimepicker}
-        buttonStyle={styles.buttonHora}
+        containerStyle={{borderRadius: 80,marginBottom:15}} 
+        style={styles.button}
+        buttonStyle={styles.button}
         icon={<Icon name="access-time" size={24} color="white" />}
         raised
       />
@@ -93,14 +97,14 @@ export function AgendarConsultaScreen() {
         title="Agendar"
         onPress={agendarConsulta}
         buttonStyle={styles.button}
-        containerStyle={{marginTop:35}} 
+        containerStyle={{marginTop:15,borderRadius: 80}} 
         icon={<Icon name="event" size={24} color="white" />}
         raised
       />
       <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+          buttonStyle={styles.botaoVoltar}
           containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
         />
@@ -113,11 +117,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 200,
+    marginTop: 30,
     marginBottom:10,
     color: 'rgb(79, 121, 66)' ,
     textAlign: 'center'
@@ -126,14 +132,25 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: 'rgb(34, 139, 34)'
+    backgroundColor: 'rgb(34, 139, 34)',
+    borderRadius: 80,
+    height: 40,
+    width: 300
+    //width: 300
   },
+
   buttonHora: {
     backgroundColor: 'rgb(34, 139, 34)'
   },
   background: {
     width: '100%',
     height: '100%',
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
   }
 
 });

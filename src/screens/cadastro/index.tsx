@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 //import * as React from 'react';
 import comida from './../../../assets/images/comida.jpeg';
-import { View, Text, ImageBackground, StyleSheet, Alert } from 'react-native';
-import { Input } from '@rneui/themed';
+import { View, Text, ImageBackground, StyleSheet, Alert,TextInput } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
@@ -44,17 +43,29 @@ export function CadastroScreen(props: any){
   return (
     <ImageBackground source={comida} style={styles.background}>
     <View style={styles.container}>
-      <Input
+      <TextInput
         placeholder="Nome Completo"
         onChangeText={setNome}
         value={nome}
-        style={{ width: 200, borderWidth: 1, marginBottom: 10 }}
+        style={{ width: 300,
+          height:30,
+          borderWidth: 1,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2, }}
       />
-      <Input
+      <TextInput
         placeholder="CPF"
         onChangeText={setCPF}
         value={cpf}
-        style={{ width: 200, borderWidth: 1, marginBottom: 10 }}
+        style={{ width: 300,
+          height:30,
+          borderWidth: 1,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2, }}
       />
        <RNPickerSelect
           placeholder={{ label: 'Selecione o sexo', value: null }}
@@ -66,7 +77,7 @@ export function CadastroScreen(props: any){
           value={sexo}
           style={pickerSelectStyles}
         />
-      <Input
+      <TextInput
         placeholder="Email"
         onChangeText={(text) => {
           setEmail(text);
@@ -74,25 +85,36 @@ export function CadastroScreen(props: any){
         }}
         value={email}
         style={{
-          width: 200,
+          width: 300,
+          height:30,
           borderWidth: 1,
-          marginBottom: 1,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
-      {!isValidEmail && <Text style={{ color: 'red',marginTop:-15}}>Email Invalido</Text>}
-      <Input
+      {!isValidEmail && <Text style={{ color: 'red',marginTop:-15}}>Email Inválido
+</Text>}
+      <TextInput
         placeholder="Senha"
        onChangeText={setPassword}
         value={password}
         secureTextEntry={true}
         style={{
-          width: 200,
+          width: 300,
+          height:30,
           borderWidth: 1,
+          borderRadius: 80,
+          marginBottom:20,
+          fontSize:20,
+          padding:2,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />
-        {!isValidPassword && <Text style={{ color: 'red', marginTop:-15 }}>Senha Invalida!</Text>}
+        {!isValidPassword && <Text style={{ color: 'red', marginTop:-15 }}>Senha Inválida
+!</Text>}
        <Button
           title=" Cadastrar"
           onPress= {handleSignIn} 
@@ -127,9 +149,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-   padding: 5,
-    alignItems: 'stretch',
-    marginTop: 260,
+    alignItems: 'center',
+    marginTop: 200,
   },
   inputContainer: {
     backgroundColor: 'white',
@@ -144,9 +165,19 @@ const pickerSelectStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     marginBottom:20,
-    borderRadius: 4,
+    borderRadius: 80,
     color: 'black',
     paddingRight: 30,
-    backgroundColor: 'white',
+    backgroundColor: 'white',  justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    width: 300, 
+    marginLeft:60,
+    height: 30, 
+  },
+  button: {
+    borderRadius: 80,
+    height: 40,
+    width: 150
   },
 });

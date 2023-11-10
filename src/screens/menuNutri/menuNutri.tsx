@@ -15,18 +15,22 @@ export function MenuNutri(props: any) {
   const navigation = useNavigation<navProps>();
   return (
     <ImageBackground source={bg} style={styles.background}>
+        <Text style={styles.text}> MENU NUTRICIONISTA</Text> 
       <View style={styles.container}>
+
         <Button 
           title="Avaliação Nutricional"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{   marginTop:230}}
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+           containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('calculosOpcoes')}  
           icon={<FontAwesomeIcon icon={faWeightScale} size={24} color="white" style={{ marginRight: 10 }} />} 
           raised={true}></Button>
         <Button 
           title="Agendar Consulta"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('agendamento')}
           icon={
             <Icon
@@ -39,25 +43,29 @@ export function MenuNutri(props: any) {
           raised={true}></Button>
           <Button 
           title="Cadastrar Paciente"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('cadastroPaciente')} 
           raised={true}></Button>
           <Button 
           title="Meus Pacientes"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('listaPacientes')} 
           raised={true}></Button>
           <Button 
           title="Planejamento Alimentar Individual"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('planoAlimentar')} 
           raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
-           containerStyle={{  marginTop:15}} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
+           style={styles.botaoVoltar}
+           containerStyle={{ marginTop:20,borderRadius: 80}}
            />
       </View>
 
@@ -69,11 +77,32 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 10,
-    alignItems: 'stretch',
-  }
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      padding: 10,
+      alignItems: 'center',
+    },
+  button: {
+    borderRadius: 80,
+    height: 40,
+    width: 400,
+    backgroundColor: 'rgb(34, 139, 34)'
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
+  },
+  text:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign:'center',
+    marginTop: 250,
+    marginBottom:-200,
+   color: 'rgb(79, 121, 66)' ,
+    //color:'rgb(34, 139, 34)'
+  },
 
 });

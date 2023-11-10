@@ -13,20 +13,23 @@ export function MenuScreen(props: any) {
   return (
     <ImageBackground source={meal} style={styles.background}>
       <View style={styles.container}>
-        <Button 
+      <Button 
           title="Sou Nutricionista"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{   marginTop:230}}
-          onPress= {() => navigation.navigate('loginNutri')}  
+          style={styles.button}
+          containerStyle={{ marginTop: 230, borderRadius: 80}} 
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}}
+          onPress={() => navigation.navigate('loginNutri')}  
           raised={true}></Button>
         <Button 
           title="Sou Paciente"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:15}}
+          style={styles.button}
+          containerStyle={{   marginTop:15,borderRadius: 80}} 
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
-          <Text style={{marginTop:10}}onPress= {() => navigation.navigate('cadastro')} >Nao possui cadastro? Clique aqui. </Text>
-          <Text style={{marginTop:10}}onPress= {() => navigation.navigate('tiraFoto')} > Tirar Foto </Text>
+          <Text style={{ marginTop: 10 }}>Não possui cadastro?{' '}
+          <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
+        onPress={() => navigation.navigate('cadastro')}>Clique aqui</Text>.</Text>
       </View>
     </ImageBackground>
   );
@@ -39,7 +42,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 10,
-    alignItems: 'stretch',
-  }
+    alignItems: 'center',
+  },
+  button: {
+    borderRadius: 80,
+    height: 40,
+    width: 160,
+  },
 });

@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import bg from './../../../assets/images/bg.jpeg';
-import { Input } from '@rneui/themed';
 import {Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 
 export function MenuPaciente(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'listaPlanoAlimentar','agendamento'>;
@@ -19,8 +16,9 @@ export function MenuPaciente(props: any) {
       <View style={styles.container}>
         <Button 
           title="Agendar Consulta"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
+          containerStyle={{ marginTop:-100,borderRadius: 80}}
+          style={styles.button}
           onPress= {() => navigation.navigate('agendamento')}
           icon={
             <Icon
@@ -33,13 +31,16 @@ export function MenuPaciente(props: any) {
           raised={true}></Button>
           <Button 
           title="Meu Plano Alimentar Individual"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}} 
-          containerStyle={{ marginTop:10}}
+         buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
+         style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('listaPlanoAlimentar')} 
           raised={true}></Button>
+
           <Button title="Voltar" onPress={() => navigation.goBack()}
-           containerStyle={{  marginTop:15}} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+          style={styles.button}
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
+          containerStyle={{ marginTop:20,borderRadius: 80}}
            />
       </View>
 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 10,
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
   text:{
     fontSize: 30,
@@ -64,7 +65,12 @@ const styles = StyleSheet.create({
     marginTop: 250,
     marginBottom:-200,
     color: 'rgb(79, 121, 66)' ,
-    
+  },
+    button: {
+    borderRadius: 80,
+    height: 40,
+    width: 400
+    //width: 150
   },
 
 });
