@@ -86,16 +86,17 @@ export function CalculoIMC(props: any) {
         style={{ width: 200, marginBottom: 10 }}
       />
       <Button
-        title="Calcular"
+        title="Calcular IMC"
         onPress={calcularIMC}
-        buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+        buttonStyle={styles.button}
+        containerStyle={{marginTop:15,borderRadius: 80}} 
         raised={true}
       />
       <Button
         title="Voltar"
         onPress={() => navigation.goBack()}
-        buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-        containerStyle={{ marginTop: 15 }}
+        buttonStyle={styles.botaoVoltar}
+        containerStyle={{marginTop:15,borderRadius: 80}} 
         raised={true}
       />
 
@@ -127,7 +128,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 5,
-    alignItems: 'stretch',
+    alignItems: 'center',
+    marginBottom:220
   },
   modalContainer: {
     flex: 1,
@@ -140,4 +142,17 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
+button:{
+  backgroundColor: 'rgb(34, 139, 34)',
+  borderRadius: 90,
+  height: 40,
+  width: 300
+},
+botaoVoltar:{
+  borderRadius: 80,
+  height: 40,
+  width: 300,
+  backgroundColor: 'rgb(79, 121, 66)' 
+}
+
 });

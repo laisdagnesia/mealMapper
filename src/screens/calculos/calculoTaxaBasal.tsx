@@ -87,25 +87,25 @@ export function CalculoTMB(props: any) {
           value={sexo}
           style={pickerSelectStyles}
         />
-
-        <Button
-          title="Calcular TMB"
-          onPress={calcularTMBEExibirAlerta}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ marginTop: 15 }}
-          raised={true}
-        />
-
-        {tmb !== null && (
+     {tmb !== null && (
           <View style={styles.resultContainer}>
             <Text style={styles.resultText}>Sua TMB é de {tmb.toFixed(2)} calorias por dia.</Text>
           </View>
         )}
         <Button
+          title="Calcular TMB"
+          onPress={calcularTMBEExibirAlerta}
+          buttonStyle={styles.button}
+          containerStyle={{marginTop:10,borderRadius: 80}} 
+          raised={true}
+        />
+
+   
+        <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ marginTop: 15 }}
+          buttonStyle={styles.botaoVoltar}
+          containerStyle={{marginTop:15,borderRadius: 80}} 
           raised={true}
         />
       </View>
@@ -121,6 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+    marginBottom:200,
+    alignItems: 'center',
   },
   input: {
     marginBottom: 10,
@@ -134,6 +136,18 @@ const styles = StyleSheet.create({
   resultText: {
     color: 'white',
   },
+  button:{
+    backgroundColor: 'rgb(34, 139, 34)',
+    borderRadius: 90,
+    height: 40,
+    width: 300
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
+  }
 });
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
@@ -145,7 +159,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderRadius: 4,
     color: 'black',
     paddingRight: 30,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
   inputAndroid: {
     fontSize: 16,
@@ -156,6 +170,6 @@ const pickerSelectStyles = StyleSheet.create({
     borderRadius: 8,
     color: 'black',
     paddingRight: 30,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
 });

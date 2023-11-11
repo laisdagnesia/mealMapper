@@ -39,13 +39,13 @@ export function OpcoesCalculo(props: any) {
         />
 
         {renderOption()}
-        {/*<Button
+        {/* <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ borderRadius: 30, marginTop: 15 }}
+          buttonStyle={styles.botaoVoltar}
+          containerStyle={{ borderRadius: 80, marginBottom:40 }}
           raised={true}
-        />*/}
+        /> */}
       </View>
     </ImageBackground>
   );
@@ -59,13 +59,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginTop:50
+  //  marginTop:50
   },
   buttonGroup: {
     height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+   // backgroundColor: 'rgba(255, 255, 255, 0.2)',
+   backgroundColor: 'green',
     borderRadius: 10,
-    marginTop: 150,
+    marginTop: 200,
   },
   buttonText: {
     color: 'white',
@@ -75,5 +76,6 @@ const styles = StyleSheet.create({
   },
   selectedButtonText: {
     color: 'black',
-  },
+  }
+  
 });
