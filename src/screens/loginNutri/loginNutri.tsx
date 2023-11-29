@@ -47,7 +47,7 @@ export function LoginScreenNutri(props: any) {
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+          paddingHorizontal: 10,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
@@ -65,7 +65,7 @@ export function LoginScreenNutri(props: any) {
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+          paddingHorizontal: 10,
          borderColor: isValidPassword ? 'black' : 'red',
         }}
       />

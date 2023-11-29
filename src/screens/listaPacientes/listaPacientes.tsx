@@ -26,7 +26,8 @@ const ListaDePacientes = ({ route }) => {
    <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+         buttonStyle={styles.botaoVoltar}
+          containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
         />
     </View>
@@ -55,6 +56,12 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: '100%',
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
   }
 });
 

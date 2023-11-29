@@ -83,7 +83,12 @@ export function CadastroPaciente() {
                 <TouchableOpacity onPress={openLibrary}>
                     <Image source={{uri : image}}style={styles.image}></Image>
                 </TouchableOpacity>
-                <Button title="Tirar Foto" onPress={tirarFoto} />
+                {/* <Button title="Tirar Foto" onPress={tirarFoto} 
+                 buttonStyle={styles.button}
+                 style={styles.button}
+                 containerStyle={{ borderRadius: 80}}/> */}
+          <Text style={{ color: 'blue', textDecorationLine: 'underline', fontSize:20, marginTop:10 }}
+        onPress={tirarFoto} >Tirar Foto</Text>
         <Input
           placeholder="Nome Completo"
           onChangeText={setNome}
@@ -120,15 +125,16 @@ export function CadastroPaciente() {
         />
         <Button
           title=" Cadastrar"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
+          buttonStyle={styles.button}
+          containerStyle={{marginTop:15,borderRadius: 80}} 
           raised={true}
           onPress={handleCadastroPaciente}
         ></Button>
         <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ marginTop: 15 }}
+          buttonStyle={styles.botaoVoltar}
+          containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
         ></Button>
         {/* <FlatList
@@ -157,7 +163,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 5,
-   marginBottom: 55,
+   //marginBottom: 55,
+   alignItems: 'center',
   },
   inputContainer: {
     backgroundColor: 'white',
@@ -174,8 +181,19 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 150,
-    marginLeft:150,
   },
+  button: {
+    backgroundColor: 'rgb(34, 139, 34)',
+    borderRadius: 80,
+    height: 40,
+    width: 300
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
+  }
 });
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
@@ -188,6 +206,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderRadius: 4,
     color: 'black',
     paddingRight: 30,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
+
   },  
 });

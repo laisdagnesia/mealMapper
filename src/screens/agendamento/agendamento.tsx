@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 30,
     marginBottom:10,
+    marginTop:-30,
     color: 'rgb(79, 121, 66)' ,
     textAlign: 'center'
   },
@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     height: 40,
     width: 300
-    //width: 300
   },
 
   buttonHora: {

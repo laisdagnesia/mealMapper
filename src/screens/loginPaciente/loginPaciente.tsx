@@ -6,6 +6,9 @@ import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+
 export interface LoginscreenProps {}
 
 export function LoginScreen(props: LoginscreenProps) {
@@ -16,21 +19,38 @@ export function LoginScreen(props: LoginscreenProps) {
 
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login','menuPaciente'>;
   const navigation = useNavigation<navProps>();
+  const auth = getAuth()
 
-  const handleLogin = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(email);
-    const isValidPassword = password.length >= 6;
+  // const handleLogin = () => {
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   const isValidEmail = emailRegex.test(email);
+  //   const isValidPassword = password.length >= 6;
 
-    setIsValidEmail(isValidEmail);
-    setIsValidPassword(isValidPassword);
+  //   setIsValidEmail(isValidEmail);
+  //   setIsValidPassword(isValidPassword);
 
-        if (!isValidEmail || !isValidPassword) {
-      return ;
-    }  if (isValidEmail && isValidPassword){
-      navigation.navigate('menuPaciente')}
-     //Alert.alert(`Login Realizado!`);}
-  };
+  //       if (!isValidEmail || !isValidPassword) {
+  //     return ;
+  //   }  if (isValidEmail && isValidPassword){
+  //     navigation.navigate('menuPaciente')}
+  //    //Alert.alert(`Login Realizado!`);}
+  // };
+
+// const handleLogin = async({email,password}:any)=> {
+//           await signInWithEmailAndPassword(auth, email,password)
+//           .then(usuarios => navigation.navigate('menuPaciente'))
+//           .catch(erro => Alert.alert('Erro', 'Login ou senha incorreta'));
+// }
+
+const handleLogin = async ({ email, password }: any) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password)
+    navigation.navigate('menuPaciente');
+  } catch (error) {
+    console.error('Error signing in:', error);
+    Alert.alert('Erro', 'Login ou senha incorreta');
+  }
+};
 
   return (
     <ImageBackground source={meal} style={styles.background}>
@@ -49,7 +69,7 @@ export function LoginScreen(props: LoginscreenProps) {
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+         paddingHorizontal: 10,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
@@ -67,7 +87,7 @@ export function LoginScreen(props: LoginscreenProps) {
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+         paddingHorizontal: 10,
          borderColor: isValidPassword ? 'black' : 'red',
         }}
       />

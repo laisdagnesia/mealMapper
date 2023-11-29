@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
+import { getAuth, createUserWithEmailAndPassword } from '@firebase/auth';
+import { getFirestore, setDoc, doc } from '@firebase/firestore';
 
 
 export function CadastroScreen(props: any){
@@ -19,25 +21,26 @@ export function CadastroScreen(props: any){
   const [isValidPassword, setIsValidPassword] = useState(true);
 
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'cadastro'>;
-  const navigation = useNavigation<navProps>();
+  const auth = getAuth();
+  const db = getFirestore();
+  const navigation = useNavigation();
 
-
-  const handleSignIn = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(email);
-    const isValidPassword = password.length >= 6;
-
-    setIsValidEmail(isValidEmail);
-    setIsValidPassword(isValidPassword);
-
-    if (!isValidEmail || !isValidPassword) {
-      return;
-    } if(isValidEmail && isValidPassword) {
-      //Alert.alert(`Nome: ${nome}\nCPF: ${cpf}\nEmail: ${email}\n Cadastro Realizado!`);
-      navigation.navigate('login');
-      
-    }
+  const handleSignIn = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   
+      const { user } = userCredential;
+  
+      await setDoc(doc(db, 'usuarios', user.uid), {
+        email,
+        nome,
+        cpf
+      });
+      navigation.navigate('login');
+    } catch (error) {
+      console.error('Error creating user:', error);
+      Alert.alert('Error', 'Não foi possível criar o usuário, tente novamente.');
+    }
   };
 
   return (
@@ -47,25 +50,25 @@ export function CadastroScreen(props: any){
         placeholder="Nome Completo"
         onChangeText={setNome}
         value={nome}
-        style={{ width: 300,
+        style={{ width: 350,
           height:30,
           borderWidth: 1,
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2, }}
+          paddingHorizontal: 10, }}
       />
       <TextInput
         placeholder="CPF"
         onChangeText={setCPF}
         value={cpf}
-        style={{ width: 300,
+        style={{ width: 350,
           height:30,
           borderWidth: 1,
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2, }}
+          paddingHorizontal: 10, }}
       />
        <RNPickerSelect
           placeholder={{ label: 'Selecione o sexo', value: null }}
@@ -85,13 +88,13 @@ export function CadastroScreen(props: any){
         }}
         value={email}
         style={{
-          width: 300,
+          width: 350,
           height:30,
           borderWidth: 1,
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+          paddingHorizontal: 10,
           borderColor: isValidEmail ? 'black' : 'red',
         }}
       />
@@ -103,13 +106,13 @@ export function CadastroScreen(props: any){
         value={password}
         secureTextEntry={true}
         style={{
-          width: 300,
+          width: 350,
           height:30,
           borderWidth: 1,
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-          padding:2,
+         // padding:10,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />
@@ -117,25 +120,20 @@ export function CadastroScreen(props: any){
 !</Text>}
        <Button
           title=" Cadastrar"
-          onPress= {handleSignIn} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)'}}
-          icon={
-            <Icon
-              name="save"
-              size={24}
-              color="white" 
-            />
-          }
+          buttonStyle={styles.button}
+          containerStyle={{marginTop:15,borderRadius: 80}} 
+          onPress= {handleSignIn}
+          // icon={
+          //   <Icon
+          //     name="save"
+          //     size={24}
+          //     color="white" 
+          //   />
+          // }
           raised={true}></Button>
-          {/*<Button
-          title="Login"
-          onPress= {() => navigation.navigate('login')} 
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ borderRadius: 30, marginTop:15}} 
-        raised={true}></Button>*/}
           <Button title="Voltar" onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-            containerStyle={{ marginTop:15}} 
+           buttonStyle={styles.botaoVoltar}
+           containerStyle={{ borderRadius: 30, marginTop: 15 }}
               raised={true}></Button>
     </View>
     </ImageBackground>
@@ -155,12 +153,24 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: 'white',
   },
+  button: {
+    backgroundColor: 'rgb(34, 139, 34)',
+    borderRadius: 80,
+    height: 40,
+    width: 300
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
+  }
 
 });
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
+    fontSize: 20,
+    //paddingVertical: 1,
     paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: 'gray',
@@ -171,13 +181,8 @@ const pickerSelectStyles = StyleSheet.create({
     backgroundColor: 'white',  justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    width: 300, 
-    marginLeft:60,
+    width: 350,
+    marginLeft:40,
     height: 30, 
-  },
-  button: {
-    borderRadius: 80,
-    height: 40,
-    width: 150
   },
 });
