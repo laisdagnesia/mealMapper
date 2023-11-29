@@ -42,7 +42,7 @@ export function LoginScreen(props: LoginscreenProps) {
 //           .catch(erro => Alert.alert('Erro', 'Login ou senha incorreta'));
 // }
 
-const handleLogin = async ({ email, password }: any) => {
+const handleLogin = async() => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
     navigation.navigate('menuPaciente');

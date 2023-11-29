@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export function LoginScreenNutri(props: any) {
   const [email, setEmail] = useState('');
@@ -15,21 +15,32 @@ export function LoginScreenNutri(props: any) {
 
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'loginNutri', 'menuNutri'>;
   const navigation = useNavigation<navProps>();
+  const auth = getAuth()
 
-  const handleLogin = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(email);
-    const isValidPassword = password.length >= 6;
 
-    setIsValidEmail(isValidEmail);
-    setIsValidPassword(isValidPassword);
+  // const handleLogin = () => {
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   const isValidEmail = emailRegex.test(email);
+  //   const isValidPassword = password.length >= 6;
 
-        if (!isValidEmail || !isValidPassword) {
-      return ;
-    }  if (isValidEmail && isValidPassword){
-      navigation.navigate('menuNutri')}
+  //   setIsValidEmail(isValidEmail);
+  //   setIsValidPassword(isValidPassword);
+
+  //       if (!isValidEmail || !isValidPassword) {
+  //     return ;
+  //   }  if (isValidEmail && isValidPassword){
+  //     navigation.navigate('menuNutri')}
+  // };
+
+  const handleLogin = async() => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      navigation.navigate('menuNutri');
+    } catch (error) {
+      console.error('Error signing in:', error);
+      Alert.alert('Erro', 'Login ou senha incorreta');
+    }
   };
-
   return (
     <ImageBackground source={meal} style={styles.background}>
       <View style={styles.container}>
