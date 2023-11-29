@@ -1,7 +1,6 @@
 import React , { useState } from 'react';
 import meal from './../../../assets/images/meal.jpeg';
 import { View, Text, ImageBackground, StyleSheet, Alert , TextInput} from 'react-native';
-//import { Input } from '@rneui/themed';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -21,27 +20,6 @@ export function LoginScreen(props: LoginscreenProps) {
   const navigation = useNavigation<navProps>();
   const auth = getAuth()
 
-  // const handleLogin = () => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   const isValidEmail = emailRegex.test(email);
-  //   const isValidPassword = password.length >= 6;
-
-  //   setIsValidEmail(isValidEmail);
-  //   setIsValidPassword(isValidPassword);
-
-  //       if (!isValidEmail || !isValidPassword) {
-  //     return ;
-  //   }  if (isValidEmail && isValidPassword){
-  //     navigation.navigate('menuPaciente')}
-  //    //Alert.alert(`Login Realizado!`);}
-  // };
-
-// const handleLogin = async({email,password}:any)=> {
-//           await signInWithEmailAndPassword(auth, email,password)
-//           .then(usuarios => navigation.navigate('menuPaciente'))
-//           .catch(erro => Alert.alert('Erro', 'Login ou senha incorreta'));
-// }
-
 const handleLogin = async() => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
@@ -51,7 +29,6 @@ const handleLogin = async() => {
     Alert.alert('Erro', 'Login ou senha incorreta');
   }
 };
-
   return (
     <ImageBackground source={meal} style={styles.background}>
       <View style={styles.container}>
@@ -112,6 +89,9 @@ const handleLogin = async() => {
            containerStyle={{   marginTop:15,borderRadius: 80}} 
            buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
            />
+          <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+          <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
+        onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
 
       </View>
     </ImageBackground>

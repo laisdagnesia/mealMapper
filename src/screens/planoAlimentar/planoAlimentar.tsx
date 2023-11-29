@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import bg from './../../../assets/images/bg.jpeg';
+import agenda from './../../../assets/images/agenda.jpg';
 import {
   View,
   Text,
@@ -14,79 +14,140 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import RNPickerSelect from 'react-native-picker-select';
+import { ScrollView } from 'react-native';
 
 export function PlanoAlimentarIndividual() {
   const [tipo, setTipo] = useState(''); //Inicia tipo como uma string vazia
   const [nome, setNome] = useState('');
-  const [alimento, setAlimento] = useState('');
+ // const [alimento, setAlimento] = useState('');
+  const [cafe, setCafe] = useState('');
+  const [lancheManha, setLancheManha] = useState('');
+  const [almoco, setAlmoco] = useState('');
+  const [lancheTarde, setLancheTarde] = useState('');
+  const [jantar, setJantar] = useState('');
+  const [ceia, setCeia] = useState('');
   const [dietaList, setDietaList] = useState([]);
+  
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'cadastro'>;
   const navigation = useNavigation<navProps>();
 
+  // const handleDieta = () => {
+  //   if (!nome || !tipo || !alimento) {
+  //     Alert.alert('Campos incompletos', 'Preencha todos os campos.', 'red');
+  //   } else {
+  //     const dietEntry = {
+  //       nome: nome,
+  //       tipo: tipo,
+  //       alimento: alimento,
+  //     };
+
+  //     setDietaList([...dietaList, dietEntry]);
+
+  //     setNome('');
+  //     setTipo(''); // Torna o tipo uma string vazia
+  //     setAlimento('');
+
+  //     navigation.navigate('listaPlanoAlimentar', { dietaList: [...dietaList, dietEntry] });
+  //   }
+  // };
   const handleDieta = () => {
-    if (!nome || !tipo || !alimento) {
-      Alert.alert('Campos incompletos', 'Preencha todos os campos.', 'red');
-    } else {
+ 
       const dietEntry = {
         nome: nome,
         tipo: tipo,
-        alimento: alimento,
+        cafe: cafe,
+        lancheManha:lancheManha,
+        almoco:almoco,
+        lancheTarde:lancheTarde,
+        jantar:jantar,
+        ceia:ceia
       };
 
       setDietaList([...dietaList, dietEntry]);
 
       setNome('');
-      setTipo(''); // Torna o tipo uma string vazia
-      setAlimento('');
+      setTipo(''); 
+      setCafe('');
+      setLancheManha('');
+      setAlmoco('');
+      setLancheTarde('');
+      setJantar('');
+      setCeia('');
 
       navigation.navigate('listaPlanoAlimentar', { dietaList: [...dietaList, dietEntry] });
-    }
+    
   };
 
   return (
-    <ImageBackground source={bg} style={styles.background}>
-      <View style={styles.container}>
-        <Text style={styles.title}> Plano Alimentar Individual</Text>
+    <ImageBackground source={agenda} style={styles.background}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          <Text style={styles.title}> Plano Alimentar Individual</Text>
+          <Input
+            placeholder="Nome Paciente"
+            onChangeText={setNome}
+            value={nome}
+            style={styles.input}
+          />
+           <Text style={styles.text}>Café da Manhã </Text>
         <Input
-          placeholder="Nome Paciente"
-          onChangeText={setNome}
-          value={nome}
+          placeholder="Refeição"
+          onChangeText={setCafe}
+          value={cafe}
           style={styles.input}
         />
-        <RNPickerSelect
-          placeholder={{ label: 'Selecione a refeição', value: null }}
-          onValueChange={(value) => setTipo(value)}
-          items={[
-            { label: 'Café da Manhã', value: 'Café Da Manhã' },
-            { label: 'Lanche da Manhã', value: 'Lanche Café Da Manhã' },
-            { label: 'Almoço', value: 'almoco' },
-            { label: 'Lanche Da Tarde', value: 'Lanche Da Tarde' },
-            { label: 'Jantar', value: 'Jantar' },
-            { label: 'Ceia', value: 'Ceia' },
-          ]}
-          value={tipo}
-          style={pickerSelectStyles}
-        />
+        <Text style={styles.text}>Lanche da Manhã </Text>
         <Input
-          placeholder="Alimento"
-          onChangeText={setAlimento}
-          value={alimento}
+          placeholder="Refeição"
+          onChangeText={setLancheManha}
+          value={lancheManha}
           style={styles.input}
         />
-        <Button
-          title="Salvar"
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          raised={true}
-          onPress={handleDieta}
-        ></Button>
-        <Button
+      <Text style={styles.text}>Almoço</Text>
+        <Input
+          placeholder="Refeição"
+          onChangeText={setAlmoco}
+          value={almoco}
+          style={styles.input}
+        />
+        <Text style={styles.text}>Lanche Da Tarde</Text>
+        <Input
+          placeholder="Refeição"
+          onChangeText={setLancheTarde}
+          value={lancheTarde}
+          style={styles.input}
+        />
+         <Text style={styles.text}>Jantar</Text>
+
+        <Input
+          placeholder="Refeição"
+          onChangeText={setJantar}
+          value={jantar}
+          style={styles.input}
+        />
+         <Text style={styles.text}>Ceia</Text>
+        <Input
+          placeholder="Refeição"
+          onChangeText={setCeia}
+          value={ceia}
+          style={styles.input}
+        />
+          <Button
+            title="Salvar"
+            buttonStyle={styles.button}
+            containerStyle={{marginTop:15,borderRadius: 80}} 
+            raised={true}
+            onPress={handleDieta}
+          />
+          <Button
           title="Voltar"
           onPress={() => navigation.goBack()}
-          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
-          containerStyle={{ marginTop: 15 }}
+          buttonStyle={styles.botaoVoltar}
+          containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
-        ></Button>
-      </View>
+          />
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -106,6 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 5,
     marginBottom: 55,
+    alignItems: 'center',
   },
   inputContainer: {
     backgroundColor: 'white',
@@ -115,10 +177,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:'center',
     marginBottom:10,
-    color: 'rgb(79, 121, 66)' 
-
-    
+    color: 'rgb(79, 121, 66)' ,
+    marginTop:210
   },
+  text:{
+  //marginRight:210,
+  fontSize:15,
+  fontWeight: 'bold',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
+  },
+  button: {
+    backgroundColor: 'rgb(34, 139, 34)',
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+  },
+  botaoVoltar:{
+    borderRadius: 80,
+    height: 40,
+    width: 300,
+    backgroundColor: 'rgb(79, 121, 66)' 
+  }
+
 });
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {

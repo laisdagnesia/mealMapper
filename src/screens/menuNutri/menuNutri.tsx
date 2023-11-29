@@ -9,10 +9,19 @@ import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
+import { getAuth } from '@firebase/auth';
 
 export function MenuNutri(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login','calculosOpcoes'>;
   const navigation = useNavigation<navProps>();
+
+  const logOut = () => {
+    const auth = getAuth();
+    auth.signOut();
+    navigation.navigate('menu');
+  };
+
+
   return (
     <ImageBackground source={bg} style={styles.background}>
         <Text style={styles.text}> MENU NUTRICIONISTA</Text> 
@@ -67,6 +76,11 @@ export function MenuNutri(props: any) {
            style={styles.botaoVoltar}
            containerStyle={{ marginTop:20,borderRadius: 80}}
            />
+            <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+          <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
+        onPress={() => navigation.navigate('mudarSenha')}> Clique aqui</Text>.</Text>
+         <Text style={{ color: 'blue', textDecorationLine: 'underline', marginTop:10 }}
+        onPress={(logOut)}> Sign Out</Text>
       </View>
 
     </ImageBackground>

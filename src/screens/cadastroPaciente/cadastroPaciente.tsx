@@ -17,6 +17,8 @@ import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import RNPickerSelect from 'react-native-picker-select';
 import * as ImagePicker from 'expo-image-picker';
 import avatar from '../../../assets/images/avatar.jpeg';
+import { doc, setDoc, getFirestore } from '@firebase/firestore';
+
 
 export function CadastroPaciente() {
   const [nome, setNome] = useState('');
@@ -24,24 +26,25 @@ export function CadastroPaciente() {
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
   const [nomesList, setNomesList] = useState([]);
+  const [cpf, setCPF] = useState('');
   const [sexo, setSexo] = useState('');
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'cadastro'>;
   const navigation = useNavigation<navProps>();
 
-  const handleCadastroPaciente = () => {
-    if (!nome) {
-      Alert.alert('Preencha todos os campos.');
-    } else {
-      setNomesList([...nomesList, nome]);
+  let db = getFirestore();
+  
+  const handleCadastroPaciente = async () => {
+    await setDoc(doc(db, 'pacientes', nome),{
+      nome,
+      //cpf,
+      dataNasc,
+      peso,
+      altura,
+      sexo
+    })
+    navigation.navigate('listaPacientes', { nomesList: [...nomesList, nome] });
+  }
 
-      setNome('');
-      setPeso('');
-      setDataNasc('');
-      setAltura('');
-
-      navigation.navigate('listaPacientes', { nomesList: [...nomesList, nome] });
-    }
-  };
   const [image, setImage] = useState(ImageNative.resolveAssetSource(avatar).uri);
   const openLibrary = async () => {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -83,17 +86,13 @@ export function CadastroPaciente() {
                 <TouchableOpacity onPress={openLibrary}>
                     <Image source={{uri : image}}style={styles.image}></Image>
                 </TouchableOpacity>
-                {/* <Button title="Tirar Foto" onPress={tirarFoto} 
-                 buttonStyle={styles.button}
-                 style={styles.button}
-                 containerStyle={{ borderRadius: 80}}/> */}
           <Text style={{ color: 'blue', textDecorationLine: 'underline', fontSize:20, marginTop:10 }}
         onPress={tirarFoto} >Tirar Foto</Text>
         <Input
           placeholder="Nome Completo"
           onChangeText={setNome}
           value={nome}
-          style={styles.input}
+          style={{ width: 200, marginBottom: 5 }}
         />
         <Input
           placeholder="Data Nascimento"
@@ -137,13 +136,6 @@ export function CadastroPaciente() {
           containerStyle={{ borderRadius: 30, marginTop: 15 }}
           raised={true}
         ></Button>
-        {/* <FlatList
-          data={nomesList}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <Text>{item}</Text>
-          )}
-        /> */}
       </View>
     </ImageBackground>
   );
@@ -156,8 +148,8 @@ const styles = StyleSheet.create({
   },
   input: {
     width: 200,
-    marginBottom: 10, 
-    marginTop:20
+    marginBottom: 5, 
+    marginTop:5
   },
   container: {
     flex: 1,
@@ -173,7 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 200,
-    marginBottom:20,
+    marginBottom:10,
     textAlign:'center',
     color: 'rgb(79, 121, 66)' 
   },

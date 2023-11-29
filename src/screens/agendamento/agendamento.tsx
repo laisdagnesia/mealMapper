@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import bg from './../../../assets/images/bg.jpeg';
+import { doc, setDoc, getFirestore } from '@firebase/firestore';
 
 export function AgendarConsultaScreen() {
   const [nome, setNome] = useState('');
@@ -16,12 +17,19 @@ export function AgendarConsultaScreen() {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login' | 'loginNutri'>;
   const navigation = useNavigation<navProps>();
 
-  const agendarConsulta = () => {
+  let db = getFirestore();
+  const agendarConsulta = async() => {
+    await setDoc(doc(db, 'agendamento', nome),{
+      nome,
+      data,
+      horario,
+    })
     if (!nome || !data || !horario) {
       alert('Preencha todos os campos.');
     } else {
       alert(`Consulta agendada para ${data.toLocaleDateString()} às ${horario.toLocaleTimeString()} para o paciente ${nome}.`);
     }
+    
   };
 
   const showDatepicker = () => {

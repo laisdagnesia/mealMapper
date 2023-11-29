@@ -17,21 +17,6 @@ export function LoginScreenNutri(props: any) {
   const navigation = useNavigation<navProps>();
   const auth = getAuth()
 
-
-  // const handleLogin = () => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   const isValidEmail = emailRegex.test(email);
-  //   const isValidPassword = password.length >= 6;
-
-  //   setIsValidEmail(isValidEmail);
-  //   setIsValidPassword(isValidPassword);
-
-  //       if (!isValidEmail || !isValidPassword) {
-  //     return ;
-  //   }  if (isValidEmail && isValidPassword){
-  //     navigation.navigate('menuNutri')}
-  // };
-
   const handleLogin = async() => {
     try {
       await signInWithEmailAndPassword(auth, email, password)
@@ -103,7 +88,9 @@ export function LoginScreenNutri(props: any) {
            style={styles.button}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
            />
-
+           <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+           <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
+        onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
       </View>
     </ImageBackground>
   );

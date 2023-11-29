@@ -6,10 +6,17 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { getAuth } from '@firebase/auth';
 
 export function MenuPaciente(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'listaPlanoAlimentar','agendamento'>;
   const navigation = useNavigation<navProps>();
+  const logOut = () => {
+    const auth = getAuth();
+    auth.signOut();
+    navigation.navigate('menu');
+  };
+
   return (
     <ImageBackground source={bg} style={styles.background}>
         <Text style={styles.text}> MENU PACIENTE</Text> 
@@ -42,6 +49,11 @@ export function MenuPaciente(props: any) {
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
           containerStyle={{ marginTop:20,borderRadius: 80}}
            />
+            <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+          <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
+        onPress={() => navigation.navigate('mudarSenha')}> Clique aqui</Text>.</Text>
+         <Text style={{ color: 'blue', textDecorationLine: 'underline', marginTop:10 }}
+        onPress={(logOut)}> Sign Out</Text>
       </View>
 
     </ImageBackground>
