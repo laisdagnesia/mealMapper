@@ -18,6 +18,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import * as ImagePicker from 'expo-image-picker';
 import avatar from '../../../assets/images/avatar.jpeg';
 import { doc, setDoc, getFirestore } from '@firebase/firestore';
+import { ScrollView } from 'react-native';
 
 
 export function CadastroPaciente() {
@@ -81,6 +82,7 @@ export function CadastroPaciente() {
 
   return (
     <ImageBackground source={bg} style={styles.background}>
+       <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.title}> Cadastro Paciente</Text>
                 <TouchableOpacity onPress={openLibrary}>
@@ -137,6 +139,7 @@ export function CadastroPaciente() {
           raised={true}
         ></Button>
       </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 200,
+    marginTop: 190,
     marginBottom:10,
     textAlign:'center',
     color: 'rgb(79, 121, 66)' 
@@ -185,6 +188,12 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     backgroundColor: 'rgb(79, 121, 66)' 
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
   }
 });
 const pickerSelectStyles = StyleSheet.create({

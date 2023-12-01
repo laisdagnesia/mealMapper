@@ -15,6 +15,7 @@ import { PlanoAlimentarIndividual } from '../screens/planoAlimentar/planoAliment
 import { TirarFoto } from '../screens/cadastroPaciente/tirarFoto';
 import { ResetScreen } from '../screens/reset/resetSenhaEmail';
 import { MudarSenhaScreen } from '../screens/reset/mudarSenha';
+import meusAgendamentos from '../screens/meusAgendamentos/meusagendamentos';
  import { createStackNavigator } from '@react-navigation/stack';
 
 export type NavegacaoPrincipalParams = {
@@ -33,7 +34,8 @@ export type NavegacaoPrincipalParams = {
   listaPlanoAlimentar:undefined,
   tiraFoto: undefined,
   resetSenhaEmail: undefined,
-  mudarSenha:undefined
+  mudarSenha:undefined,
+  meusAgendamentos: undefined,
 }
 const Stack = createStackNavigator<NavegacaoPrincipalParams>();
 
@@ -57,6 +59,7 @@ export const TelaConfiguracao = () => (
             <Stack.Screen name="tiraFoto" component={TirarFoto} />
             <Stack.Screen name="resetSenhaEmail" component={ResetScreen} />
             <Stack.Screen name="mudarSenha" component={MudarSenhaScreen} />
+            <Stack.Screen name="meusAgendamentos" component={meusAgendamentos} />
         </Stack.Navigator>
 
     </NavigationContainer>

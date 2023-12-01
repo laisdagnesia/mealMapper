@@ -9,6 +9,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import { getAuth, createUserWithEmailAndPassword } from '@firebase/auth';
 import { getFirestore, setDoc, doc } from '@firebase/firestore';
+import { ScrollView } from 'react-native';
 
 
 export function CadastroScreen(props: any){
@@ -45,6 +46,7 @@ export function CadastroScreen(props: any){
 
   return (
     <ImageBackground source={comida} style={styles.background}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       <TextInput
         placeholder="Nome Completo"
@@ -135,7 +137,9 @@ export function CadastroScreen(props: any){
            buttonStyle={styles.botaoVoltar}
            containerStyle={{ borderRadius: 30, marginTop: 15 }}
               raised={true}></Button>
+              
     </View>
+    </ScrollView>
     </ImageBackground>
   );
 }
@@ -164,7 +168,13 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     backgroundColor: 'rgb(79, 121, 66)' 
-  }
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
+  },
 
 });
 const pickerSelectStyles = StyleSheet.create({

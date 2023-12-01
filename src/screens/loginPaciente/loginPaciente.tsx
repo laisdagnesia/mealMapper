@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { ScrollView } from 'react-native';
 
 
 export interface LoginscreenProps {}
@@ -31,6 +32,7 @@ const handleLogin = async() => {
 };
   return (
     <ImageBackground source={meal} style={styles.background}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
       <TextInput
         placeholder="Email"
@@ -94,6 +96,7 @@ const handleLogin = async() => {
         onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
 
       </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -111,7 +114,12 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 80,
     height: 40,
-    //width: 150
     width: 300
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
   },
 });

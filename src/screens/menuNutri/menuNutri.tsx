@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import bg from './../../../assets/images/bg.jpeg';
-import { Input } from '@rneui/themed';
 import {Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -10,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 import { getAuth } from '@firebase/auth';
+import { ScrollView } from 'react-native';
 
 export function MenuNutri(props: any) {
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login','calculosOpcoes'>;
@@ -20,10 +20,9 @@ export function MenuNutri(props: any) {
     auth.signOut();
     navigation.navigate('menu');
   };
-
-
   return (
     <ImageBackground source={bg} style={styles.background}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.text}> MENU NUTRICIONISTA</Text> 
       <View style={styles.container}>
 
@@ -49,6 +48,13 @@ export function MenuNutri(props: any) {
               style={{ marginRight: 10 }}
             />
           } 
+          raised={true}></Button>
+          <Button 
+          title="Minhas Consultas"
+          buttonStyle={{  backgroundColor: 'rgb(34, 139, 34)',borderRadius: 80}} 
+          style={styles.button}
+          containerStyle={{ marginTop:20,borderRadius: 80}}
+          onPress= {() => navigation.navigate('meusAgendamentos')}
           raised={true}></Button>
           <Button 
           title="Cadastrar Paciente"
@@ -82,7 +88,7 @@ export function MenuNutri(props: any) {
          <Text style={{ color: 'blue', textDecorationLine: 'underline', marginTop:10 }}
         onPress={(logOut)}> Sign Out</Text>
       </View>
-
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -113,10 +119,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign:'center',
-    marginTop: 250,
-    marginBottom:-200,
+    marginTop: 230,
+    //marginBottom:-10,
    color: 'rgb(79, 121, 66)' ,
-    //color:'rgb(34, 139, 34)'
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
   },
 
 });

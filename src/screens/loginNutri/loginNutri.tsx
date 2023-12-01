@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { ScrollView } from 'react-native';
 
 export function LoginScreenNutri(props: any) {
   const [email, setEmail] = useState('');
@@ -28,6 +29,7 @@ export function LoginScreenNutri(props: any) {
   };
   return (
     <ImageBackground source={meal} style={styles.background}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
       <TextInput
         placeholder="Email"
@@ -92,6 +94,7 @@ export function LoginScreenNutri(props: any) {
            <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
         onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
       </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -116,8 +119,10 @@ inputContainer: {
     height: 40,
     width: 150
   },
-  // titulo:{
-  //   color: 'rgb(79, 121, 66)',
-  //   fontSize: 50,
-  // }
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 5,
+    marginBottom: 55,
+  },
 });

@@ -4,22 +4,18 @@ import {
   View,
   Text,
   ImageBackground,
-  StyleSheet,
-  FlatList,
-  Alert,
+  StyleSheet
 } from 'react-native';
 import { Input } from '@rneui/themed';
 import { Button, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavegacaoPrincipalParams } from '../../navigation/configuracoes';
-import RNPickerSelect from 'react-native-picker-select';
 import { ScrollView } from 'react-native';
 
 export function PlanoAlimentarIndividual() {
-  const [tipo, setTipo] = useState(''); //Inicia tipo como uma string vazia
+  const [tipo, setTipo] = useState('');
   const [nome, setNome] = useState('');
- // const [alimento, setAlimento] = useState('');
   const [cafe, setCafe] = useState('');
   const [lancheManha, setLancheManha] = useState('');
   const [almoco, setAlmoco] = useState('');
@@ -30,26 +26,6 @@ export function PlanoAlimentarIndividual() {
   
   type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login', 'cadastro'>;
   const navigation = useNavigation<navProps>();
-
-  // const handleDieta = () => {
-  //   if (!nome || !tipo || !alimento) {
-  //     Alert.alert('Campos incompletos', 'Preencha todos os campos.', 'red');
-  //   } else {
-  //     const dietEntry = {
-  //       nome: nome,
-  //       tipo: tipo,
-  //       alimento: alimento,
-  //     };
-
-  //     setDietaList([...dietaList, dietEntry]);
-
-  //     setNome('');
-  //     setTipo(''); // Torna o tipo uma string vazia
-  //     setAlimento('');
-
-  //     navigation.navigate('listaPlanoAlimentar', { dietaList: [...dietaList, dietEntry] });
-  //   }
-  // };
   const handleDieta = () => {
  
       const dietEntry = {
@@ -181,7 +157,6 @@ const styles = StyleSheet.create({
     marginTop:210
   },
   text:{
-  //marginRight:210,
   fontSize:15,
   fontWeight: 'bold',
   },
@@ -203,19 +178,5 @@ const styles = StyleSheet.create({
     width: 300,
     backgroundColor: 'rgb(79, 121, 66)' 
   }
+});
 
-});
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    marginTop: 20,
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30,
-    backgroundColor: 'white',
-  },
-});
