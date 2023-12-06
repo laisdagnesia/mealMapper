@@ -59,11 +59,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-  //  marginTop:50
   },
   buttonGroup: {
     height: 50,
-   // backgroundColor: 'rgba(255, 255, 255, 0.2)',
    backgroundColor: 'green',
     borderRadius: 10,
     marginTop: 200,

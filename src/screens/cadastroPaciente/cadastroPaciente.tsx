@@ -37,7 +37,6 @@ export function CadastroPaciente() {
   const handleCadastroPaciente = async () => {
     await setDoc(doc(db, 'pacientes', nome),{
       nome,
-      //cpf,
       dataNasc,
       peso,
       altura,
@@ -158,7 +157,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 5,
-   //marginBottom: 55,
    alignItems: 'center',
   },
   inputContainer: {

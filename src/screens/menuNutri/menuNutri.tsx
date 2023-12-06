@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:'center',
     marginTop: 230,
-    //marginBottom:-10,
    color: 'rgb(79, 121, 66)' ,
   },
   scrollContainer: {

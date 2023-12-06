@@ -41,7 +41,6 @@ export function MudarSenhaScreen(props: any) {
           marginBottom:20,
           marginTop:150,
           fontSize:20,
-         // padding:10,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />

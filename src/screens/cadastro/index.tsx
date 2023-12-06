@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import * as React from 'react';
 import comida from './../../../assets/images/comida.jpeg';
 import { View, Text, ImageBackground, StyleSheet, Alert,TextInput } from 'react-native';
 import { Button,Icon } from 'react-native-elements';
@@ -172,7 +171,6 @@ const styles = StyleSheet.create({
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 20,
-    //paddingVertical: 1,
     paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: 'gray',
