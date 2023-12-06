@@ -19,12 +19,12 @@ export function MenuPaciente(props: any) {
 
   return (
     <ImageBackground source={bg} style={styles.background}>
-        <Text style={styles.text}> MENU PACIENTE</Text> 
+        <Text style={styles.titulo}> MENU PACIENTE</Text> 
       <View style={styles.container}>
         <Button 
           title="Agendar Consulta"
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
-          containerStyle={{ marginTop:-100,borderRadius: 80}}
+          containerStyle={{ marginTop:-50,borderRadius: 80}}
           style={styles.button}
           onPress= {() => navigation.navigate('agendamento')}
           icon={
@@ -43,16 +43,23 @@ export function MenuPaciente(props: any) {
           containerStyle={{ marginTop:20,borderRadius: 80}}
           onPress= {() => navigation.navigate('listaPlanoAlimentar')} 
           raised={true}></Button>
-
+          <Button 
+          title="Comprar Produtos"
+          style={styles.button}
+          containerStyle={{ marginBottom:0,marginTop:15,borderRadius: 80}} 
+          buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
+          onPress= {() => navigation.navigate('listaProdutos')} 
+          raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
           style={styles.button}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}} 
-          containerStyle={{ marginTop:20,borderRadius: 80}}
-           />
-            <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+          containerStyle={{ marginTop:40,borderRadius: 80}}/>
+
+          <Text style={styles.texto}>Esqueceu a senha?{' '}
           <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
         onPress={() => navigation.navigate('mudarSenha')}> Clique aqui</Text>.</Text>
-         <Text style={{ color: 'blue', textDecorationLine: 'underline', marginTop:10 }}
+
+         <Text style={{ color: 'blue', textDecorationLine: 'underline', marginTop:10, fontSize:15}}
         onPress={(logOut)}> Sign Out</Text>
       </View>
 
@@ -70,13 +77,17 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
   },
-  text:{
+  titulo:{
     fontSize: 30,
     fontWeight: 'bold',
     textAlign:'center',
     marginTop: 250,
     marginBottom:-200,
     color: 'rgb(79, 121, 66)' ,
+  },
+  texto: {
+    fontSize:15,
+    marginTop: 10 
   },
     button: {
     borderRadius: 80,

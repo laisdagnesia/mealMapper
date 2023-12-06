@@ -34,6 +34,7 @@ const handleLogin = async() => {
     <ImageBackground source={meal} style={styles.background}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
+      <Text style={styles.title}>Login Paciente</Text>
       <TextInput
         placeholder="Email"
         onChangeText={(text) => {
@@ -78,20 +79,20 @@ const handleLogin = async() => {
            containerStyle={{borderRadius: 80}} 
            style={styles.button}
            buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
-          icon={
-            <Icon
-              name="restaurant"
-              size={24}
-              color="white" 
-            />
-          }
+          // icon={
+          //   <Icon
+          //     name="restaurant"
+          //     size={24}
+          //     color="white" 
+          //   />
+          // }
           raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
           style={styles.button}
            containerStyle={{   marginTop:15,borderRadius: 80}} 
            buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
            />
-          <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+          <Text style={{ marginTop: 10,fontSize:15}}>Esqueceu a senha?{' '}
           <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
         onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
 
@@ -115,6 +116,12 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     height: 40,
     width: 300
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'rgb(79, 121, 66)',
+    textAlign: 'center',
   },
   scrollContainer: {
     flexGrow: 1,

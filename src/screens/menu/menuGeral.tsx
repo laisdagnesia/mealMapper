@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import meal from './../../../assets/images/meal.jpeg';
-import { Input } from '@rneui/themed';
 import {Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -16,7 +15,7 @@ export function MenuScreen(props: any) {
       <Button 
           title="Sou Nutricionista"
           style={styles.button}
-          containerStyle={{ marginTop: 230, borderRadius: 80}} 
+          containerStyle={{ marginTop: 250, borderRadius: 80}} 
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)',borderRadius: 80}}
           onPress={() => navigation.navigate('loginNutri')}  
           raised={true}></Button>
@@ -27,7 +26,7 @@ export function MenuScreen(props: any) {
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' ,borderRadius: 80}}
           onPress= {() => navigation.navigate('login')} 
           raised={true}></Button>
-          <Text style={{ marginTop: 10 }}>Não possui cadastro?{' '}
+          <Text style={{ marginTop: 10,fontSize:15 }}>Não possui cadastro?{' '}
           <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
         onPress={() => navigation.navigate('cadastro')}>Clique aqui</Text>.</Text>
       </View>

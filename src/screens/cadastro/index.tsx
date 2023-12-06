@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import * as React from 'react';
 import comida from './../../../assets/images/comida.jpeg';
 import { View, Text, ImageBackground, StyleSheet, Alert,TextInput } from 'react-native';
-import { Button, Icon } from 'react-native-elements';
+import { Button,Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -31,8 +31,8 @@ export function CadastroScreen(props: any){
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   
       const { user } = userCredential;
-  
-      await setDoc(doc(db, 'usuarios', user.uid), {
+     // await setDoc(doc(db, 'usuarios', user.uid),
+      await setDoc(doc(db, 'usuarios', email), {
         email,
         nome,
         cpf
@@ -114,7 +114,6 @@ export function CadastroScreen(props: any){
           borderRadius: 80,
           marginBottom:20,
           fontSize:20,
-         // padding:10,
           borderColor: isValidPassword ? 'black' : 'red',
         }}
       />
@@ -125,13 +124,6 @@ export function CadastroScreen(props: any){
           buttonStyle={styles.button}
           containerStyle={{marginTop:15,borderRadius: 80}} 
           onPress= {handleSignIn}
-          // icon={
-          //   <Icon
-          //     name="save"
-          //     size={24}
-          //     color="white" 
-          //   />
-          // }
           raised={true}></Button>
           <Button title="Voltar" onPress={() => navigation.goBack()}
            buttonStyle={styles.botaoVoltar}

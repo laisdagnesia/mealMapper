@@ -16,6 +16,8 @@ import { TirarFoto } from '../screens/cadastroPaciente/tirarFoto';
 import { ResetScreen } from '../screens/reset/resetSenhaEmail';
 import { MudarSenhaScreen } from '../screens/reset/mudarSenha';
 import meusAgendamentos from '../screens/meusAgendamentos/meusagendamentos';
+import ListaDeProdutos from '../screens/venda/ListaProdutos';
+import CarrinhoDeCompras from '../screens/venda/telaCarrinho';
  import { createStackNavigator } from '@react-navigation/stack';
 
 export type NavegacaoPrincipalParams = {
@@ -36,6 +38,8 @@ export type NavegacaoPrincipalParams = {
   resetSenhaEmail: undefined,
   mudarSenha:undefined,
   meusAgendamentos: undefined,
+  listaProdutos: undefined,
+  carrinhoCompra: undefined,
 }
 const Stack = createStackNavigator<NavegacaoPrincipalParams>();
 
@@ -60,6 +64,8 @@ export const TelaConfiguracao = () => (
             <Stack.Screen name="resetSenhaEmail" component={ResetScreen} />
             <Stack.Screen name="mudarSenha" component={MudarSenhaScreen} />
             <Stack.Screen name="meusAgendamentos" component={meusAgendamentos} />
+            <Stack.Screen name="listaProdutos" component={ListaDeProdutos} />
+            <Stack.Screen name="carrinhoCompra" component={CarrinhoDeCompras} />
         </Stack.Navigator>
 
     </NavigationContainer>

@@ -31,6 +31,7 @@ export function LoginScreenNutri(props: any) {
     <ImageBackground source={meal} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
+      <Text style={styles.title}>Login Nutricionista</Text>
       <TextInput
         placeholder="Email"
         onChangeText={(text) => {
@@ -90,7 +91,7 @@ export function LoginScreenNutri(props: any) {
            style={styles.button}
           buttonStyle={{ backgroundColor: 'rgb(79, 121, 66)' }}
            />
-           <Text style={{ marginTop: 10 }}>Esqueceu a senha?{' '}
+           <Text style={{ marginTop: 10 , fontSize:15}}>Esqueceu a senha?{' '}
            <Text style={{ color: 'blue', textDecorationLine: 'underline' }}
         onPress={() => navigation.navigate('resetSenhaEmail')}> Clique aqui</Text>.</Text>
       </View>
@@ -118,6 +119,12 @@ inputContainer: {
     borderRadius: 80,
     height: 40,
     width: 150
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'rgb(79, 121, 66)',
+    textAlign: 'center',
   },
   scrollContainer: {
     flexGrow: 1,
