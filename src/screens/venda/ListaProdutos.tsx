@@ -88,13 +88,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding:20
   },
   listItem: {
     fontSize: 20,
     marginBottom: 10,
-    marginTop: 10,
-    justifyContent: 'center',
-    
+    marginTop:30,
+    textAlign: 'justify',
+    padding:5,
+    paddingVertical: 5,
   },
   title: {
     fontSize: 30,
